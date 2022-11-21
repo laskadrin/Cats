@@ -1,6 +1,6 @@
 <div class="main-main">
     <div class="search-main">
-        <app-cats-searcher (search)="onSearch($event)"></app-cats-searcher>
+        <app-cats-searcher class="input" (search)="onSearch($event)"></app-cats-searcher>
         <h3>Породи:</h3>
         <mat-selection-list (selectionChange)="selectionChange($event)" [(ngModel)]="selected" class="breeds-list">
             <mat-list-option *ngFor="let breedName of filteredBreeds" [value]="breedName" checkboxPosition="before"
@@ -14,18 +14,22 @@
     </div>
 
     <div class="result-main">
-        <div *ngIf="!selected || selected.length == 0" class="selected-breeds">
-            <h3>Ви не обрали жодного котика, тому ми покажемо вам кілька випадкових</h3>
+        <div *ngIf="!selected || selected.length == 0">
+            <h3 class="center-text">Ви не обрали жодного котика, тому ми покажемо вам кілька випадкових</h3>
+            <div class="random-cats">
+                <div class="random-cat" *ngFor="let photo of randomPhotos">
+                    <img class="random-photo" src="{{photo.url}}">
+                </div>
+            </div>
         </div>
         <div *ngIf="selected" class="selected-breeds">
+
             <div class="breed" *ngFor="let breedName of selected">
+
                 <img class="breed-photo" src="{{getPhoto(breedName)}}" alt="{{breedName}}">
                 <span class="breed-name">{{breedName}}</span>
             </div>
-        </div>
-        <mat-paginator [length]="this.selected.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
-            aria-label="Select page">
-        </mat-paginator>
 
+        </div>
     </div>
 </div>

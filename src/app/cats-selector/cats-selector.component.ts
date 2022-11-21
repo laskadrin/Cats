@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cats-selector',
@@ -13,6 +13,8 @@ export class CatsSelectorComponent {
   breedsSet = new Map;
 
   filteredBreeds = new Array;
+
+  randomPhotos = new Array;
   endpointUrl: string = 'https://api.thecatapi.com/v1/'
   apiKey: string = 'live_u3s28vA8mgUfGFmtniAzqXFWNp0tepv6ChwM0syYlTp6NVWaS6MdcG6efxUoIBvl'
 
@@ -22,6 +24,7 @@ export class CatsSelectorComponent {
 
   ngOnInit() {
     this.getBreedsInfo();
+    this.getRandomPhotos();
     console.log(this.selected)
   }
 
@@ -47,9 +50,16 @@ export class CatsSelectorComponent {
   selectionChange($event: any) {
     this.breedsSet.set($event.option.value, !this.breedsSet.get($event.option.value))
     console.log(this.selected)
+
   }
   getPhoto(breedName: string) {
     const photoUrl = this.breeds.find((breed: any) => breed.name == breedName).image.url
     return photoUrl;
+  }
+  async getRandomPhotos() {
+    const resp = await fetch('https://api.thecatapi.com/v1/images/search?limit=3')
+    this.randomPhotos = await resp.json();
+
+
   }
 }
