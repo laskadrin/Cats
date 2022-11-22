@@ -52,7 +52,8 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
+            <pagination-controls (pageChange)="paginatorFixedResize($event)" previousLabel="" nextLabel="">
+            </pagination-controls>
         </div>
     </div>
 </div>

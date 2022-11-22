@@ -67,6 +67,7 @@ export class CatsSelectorComponent {
   }
   onPageSizeChange($event: any) {
     this.pageSize = $event.value;
+    this.paginatorFixedResize($event);
 
   }
   selectAllBreeds() {
@@ -74,5 +75,10 @@ export class CatsSelectorComponent {
     this.filteredBreeds.forEach(item => {
       this.breedsSet.set(item, true)
     });
+  }
+  paginatorFixedResize($event: any) {
+    if (this.pageSize >= this.selected.length) {
+      this.page = 1
+    } else this.page = $event;
   }
 }
