@@ -50,7 +50,7 @@
             </div>
 
         </div>
-        <div class="pagination">
+        <div class="pagination" *ngIf="selected.length>0">
             <mat-form-field appearance="fill">
                 <mat-label>Котиків за сторінку</mat-label>
                 <mat-select (selectionChange)="onPageSizeChange($event)" [(value)]="pageSize">

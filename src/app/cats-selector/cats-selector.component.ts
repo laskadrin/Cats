@@ -69,7 +69,7 @@ export class CatsSelectorComponent {
 
   }
   async getRandomPhotos() {
-    const resp = await fetch('https://api.thecatapi.com/v1/images/search?limit=20')
+    const resp = await fetch('https://api.thecatapi.com/v1/images/search/?limit=10')
     this.randomPhotos = await resp.json();
   }
   onPageSizeChange($event: any) {
