@@ -2,13 +2,24 @@
     <div class="search-main">
         <app-cats-searcher class="input" (search)="onSearch($event)"></app-cats-searcher>
         <h3>Породи:</h3>
-        <mat-selection-list (selectionChange)="selectionChange($event)" [(ngModel)]="selected" class="breeds-list">
+        <mat-selection-list *ngIf="filteredBreeds.length>0" (selectionChange)="selectionChange($event)"
+            [(ngModel)]="selected" class="breeds-list">
             <mat-list-option *ngFor="let breedName of filteredBreeds" [value]="breedName" checkboxPosition="before"
                 [selected]="breedsSet.get(breedName)">
                 {{breedName}}
             </mat-list-option>
         </mat-selection-list>
-        <button mat-raised-button color="primary" (click)="breedsSet.clear(); selected = []">Очистити вибір</button>
+        <div *ngIf="filteredBreeds.length == 0" class="breeds-list">
+            <h4>За введеними вами данними не знайдено жодної породи. =(</h4>
+        </div>
+        <button *ngIf="selected.length>0" mat-raised-button color="primary"
+            (click)="breedsSet.clear(); selected = []">Очистити вибір</button>
+        <button *ngIf="selected.length==0 && filteredBreeds.length == breedsNames.length" mat-raised-button
+            color="primary" (click)="selectAllBreeds()">Обрати
+            всі</button>
+        <button *ngIf="selected.length==0 && filteredBreeds.length<breedsNames.length && filteredBreeds.length !=0"
+            mat-raised-button color="primary" (click)="selectAllBreeds()">Обрати
+            всі відфільтровані</button>
 
 
     </div>

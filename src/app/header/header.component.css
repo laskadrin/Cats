@@ -1,0 +1,11 @@
+div {
+    width: 100%;
+    position: sticky;
+    background-color: #673ab7;
+
+    text-align: center;
+    align-items: center;
+    height: 7vh;
+    color: azure;
+
+}

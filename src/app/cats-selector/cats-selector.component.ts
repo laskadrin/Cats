@@ -69,4 +69,10 @@ export class CatsSelectorComponent {
     this.pageSize = $event.value;
 
   }
+  selectAllBreeds() {
+    this.selected = this.filteredBreeds;
+    this.filteredBreeds.forEach(item => {
+      this.breedsSet.set(item, true)
+    });
+  }
 }

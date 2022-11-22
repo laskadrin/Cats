@@ -14,6 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { CatsSelectorComponent } from './cats-selector/cats-selector.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -21,7 +22,8 @@ import { CatsSelectorComponent } from './cats-selector/cats-selector.component';
   declarations: [
     AppComponent,
     CatsSearcherComponent,
-    CatsSelectorComponent
+    CatsSelectorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

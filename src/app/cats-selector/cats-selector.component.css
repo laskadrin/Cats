@@ -17,8 +17,10 @@
 
 .breeds-list {
     height: 70vh;
-    overflow-y: scroll;
+    min-height: 70vh;
+    overflow-y: auto;
 }
+
 
 button {
     margin-top: 15px;
