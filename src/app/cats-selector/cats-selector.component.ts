@@ -57,9 +57,16 @@ export class CatsSelectorComponent {
 
 
   }
+
   getPhoto(breedName: string) {
-    const photoUrl = this.breeds.find((breed: any) => breed.name == breedName).image.url
-    return photoUrl;
+    try {
+      return this.breeds.find((breed) => breed.name == breedName).image.url
+    } catch (e) {
+      return ''
+    }
+
+
+
   }
   async getRandomPhotos() {
     const resp = await fetch('https://api.thecatapi.com/v1/images/search?limit=20')
