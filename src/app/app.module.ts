@@ -8,12 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
-
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { CatsSelectorComponent } from './cats-selector/cats-selector.component';
+
 
 
 @NgModule({
@@ -32,7 +33,9 @@ import { CatsSelectorComponent } from './cats-selector/cats-selector.component';
     MatListModule,
     ReactiveFormsModule,
     FormsModule,
-    MatPaginatorModule
+    NgxPaginationModule,
+    MatSelectModule
+
 
   ],
   providers: [],

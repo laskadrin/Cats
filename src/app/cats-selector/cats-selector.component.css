@@ -20,10 +20,6 @@
     overflow-y: scroll;
 }
 
-mat-list-option {
-    left: 0;
-}
-
 button {
     margin-top: 15px;
 }
@@ -31,6 +27,9 @@ button {
 
 .result-main {
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .selected-breeds {
@@ -87,4 +86,11 @@ button {
 
 .center-text {
     text-align: center;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
 }

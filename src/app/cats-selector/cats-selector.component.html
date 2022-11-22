@@ -14,22 +14,34 @@
     </div>
 
     <div class="result-main">
-        <div *ngIf="!selected || selected.length == 0">
+        <div *ngIf="selected.length == 0">
             <h3 class="center-text">Ви не обрали жодного котика, тому ми покажемо вам кілька випадкових</h3>
             <div class="random-cats">
-                <div class="random-cat" *ngFor="let photo of randomPhotos">
+                <div class="random-cat"
+                    *ngFor="let photo of randomPhotos | paginate: {itemsPerPage: pageSize, currentPage: page}">
                     <img class="random-photo" src="{{photo.url}}">
                 </div>
             </div>
         </div>
         <div *ngIf="selected" class="selected-breeds">
 
-            <div class="breed" *ngFor="let breedName of selected">
-
+            <div class="breed"
+                *ngFor="let breedName of selected | paginate: {itemsPerPage: pageSize, currentPage: page}">
                 <img class="breed-photo" src="{{getPhoto(breedName)}}" alt="{{breedName}}">
                 <span class="breed-name">{{breedName}}</span>
             </div>
 
+        </div>
+        <div class="pagination">
+            <mat-form-field appearance="fill">
+                <mat-label>Котиків за сторінку</mat-label>
+                <mat-select (selectionChange)="onPageSizeChange($event)" [(value)]="pageSize">
+                    <mat-option *ngFor="let pageSizeOption of pageSizes" [value]="pageSizeOption">
+                        {{pageSizeOption}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
         </div>
     </div>
 </div>
